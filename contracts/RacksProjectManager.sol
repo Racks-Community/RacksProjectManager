@@ -207,7 +207,7 @@ contract RacksProjectManager is
 			grossReputationPoints += contributor.reputationPoints;
 		} 
 		
-		contributor.reputationLevel = grossReputationPoints / 100;
+		contributor.reputationLevel = (grossReputationPoints / 100) + 1;
         	contributor.reputationPoints = grossReputationPoints % 100;
 
 		contributorsData[_account] = contributor;
