@@ -206,7 +206,9 @@ contract RacksProjectManager is
 		if (add) {
 			grossReputationPoints += contributor.reputationPoints;
 		}else {
-			grossReputationPoints += 100; // start from lvl 1
+			grossReputationPoints -= contributor.reputationPoints;
+			if (grossReputationPoints > contributor.reputationPoints)
+				grossReputationPoints = 0;
 		}
 		
 		contributor.reputationLevel = (grossReputationPoints / 100);
