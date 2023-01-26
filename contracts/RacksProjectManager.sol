@@ -204,11 +204,9 @@ contract RacksProjectManager is
 		Contributor memory contributor = contributorsData[_account];
 
 		if (add) {
-			grossReputationPoints += contributor.reputationPoints;
+			grossReputationPoints += contributor.reputationPoints + (contributor.reputationLevel * 100);
 		}else {
-			grossReputationPoints -= contributor.reputationPoints;
-			if (grossReputationPoints > contributor.reputationPoints)
-				grossReputationPoints = 0;
+			grossReputationPoints = contributor.reputationPoints + (contributor.reputationLevel * 100) - grossReputationPoints;
 		}
 		
 		contributor.reputationLevel = (grossReputationPoints / 100);
